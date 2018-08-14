@@ -26,6 +26,7 @@
   },
   "workspaces": [
     "packages/create-debug",
-    "packages/module-x"
+    "packages/module-x",
+    "packages/app-x"
   ]
 }

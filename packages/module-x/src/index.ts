@@ -1,5 +1,7 @@
 import { debugModule } from "@australis/create-debug";
-const debug = debugModule(module);
+export const debug = debugModule(module);
 export default () => {
-  debug("Hello");
+  const message = "Hello";
+  debug(message);
+  return message;
 };

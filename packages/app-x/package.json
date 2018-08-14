@@ -1,10 +1,10 @@
 {
-  "name": "@local/module-x",
+  "name": "app-x",
   "private": true,
-  "version": "1.0.1-0",
+  "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "jest --env=node --ci",
     "build": "tsc -p .",
@@ -13,17 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/debug": "^0.0.30",
-    "@types/jest": "^23.3.1",
-    "@types/node": "^10.0.0",
-    "jest": "22.4.3",
-    "rimraf": "^2.6.2",
-    "ts-jest": "22.4.4",
-    "ts-node": "^5.0.0",
-    "typescript": "3.0.1"
-  },
+  "license": "MIT",
   "jest": {
     "globals": {
       "ts-jest": {
@@ -42,5 +32,15 @@
       "json",
       "node"
     ]
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.0.0",
+    "jest": "22.4.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "22.4.4",
+    "ts-node": "^5.0.0",
+    "typescript": "3.0.1"
   }
 }

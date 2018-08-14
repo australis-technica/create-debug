@@ -2,7 +2,8 @@
   "lerna": "2.11.0",
   "packages": [
     "packages/create-debug",
-    "packages/module-x"
+    "packages/module-x",
+    "packages/app-x"
   ],
   "version": "1.0.1-0"
 }
