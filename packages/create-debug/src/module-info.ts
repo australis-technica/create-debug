@@ -1,6 +1,6 @@
 export type ModuleInfo = { id: string; parent: ModuleInfo };
 /** */
-export function moduleInfo(x: NodeModule): ModuleInfo {
+export default function moduleInfo(x: NodeModule): ModuleInfo {
   if (!x) {
     return undefined;
   }

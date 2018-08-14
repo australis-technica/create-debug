@@ -1,6 +1,6 @@
 import { IDebugger } from "debug";
 /** */
-export function changeOutput(out: string) {
+export default function changeOutput(out: string) {
   /** */
   return <T extends IDebugger> (d: T):T=> {
     switch (out) {

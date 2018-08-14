@@ -7,5 +7,6 @@ export default function idName(s: string) {
         const ret = all.length === i + 1 ? next : "";
         return /index\.*$/.test(ret) ? all[i - 1] : ret;
       });
-    return last.split(".")[0];
+      const name = last.split(".")[0];
+    return name;
   }
