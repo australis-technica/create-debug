@@ -5,8 +5,10 @@ export default function idName(s: string) {
       .split(/\/|\\/)
       .reduce((_prev, next, i, all) => {
         const ret = all.length === i + 1 ? next : "";
+        // last segment
         return /index\.*$/.test(ret) ? all[i - 1] : ret;
       });
+      // remove extension
       const name = last.split(".")[0];
     return name;
   }
