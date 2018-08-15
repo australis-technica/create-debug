@@ -8,7 +8,5 @@ describe("package-info", () => {
         const info = packageInfo(module.filename);
         expect(info.name).toBe(pkg.name);
         expect(info.main).toBe(pkg.main);
-        expect(info.version).toBe(pkg.version);
-        expect(info.description).toBe(pkg.description);
     })
 })

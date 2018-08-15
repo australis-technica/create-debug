@@ -1,7 +1,6 @@
 import { IDebug, IDebugger } from "debug";
-import moduleInfo from "./module-info";
 import changeOutput from "./change-output";
-import moduleInfoName from "./module-info-name";
+import moduleNameSpace from "./module-namespace";
 /**
  *
  */
@@ -14,7 +13,7 @@ export default function createDebug(Debug: IDebug, out = process.env.DEBUG_TO) {
       : "";
   //
   return (target: NodeModule): IDebugger => {
-    const namespace = moduleInfoName(moduleInfo(target)) + terminator;
+    const namespace = moduleNameSpace(target) + terminator;
     return changeOutput(out)(Debug(namespace));
   };
 }
