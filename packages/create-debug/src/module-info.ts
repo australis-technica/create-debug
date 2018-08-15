@@ -1,16 +1,35 @@
-export type ModuleInfo = { id: string; parent: ModuleInfo };
+import { dirname } from "path";
 /** */
-export default function moduleInfo(x: NodeModule): ModuleInfo {
-  if (!x) {
+export interface ModuleInfo  {
+  id: string;
+  filename: string;
+  dirname: string;
+  parent: ModuleInfo|undefined;
+  main: ModuleInfo|undefined;
+};
+/** */
+export default function moduleInfo(xModule: NodeModule): ModuleInfo {
+  if (!xModule) {
     return undefined;
   }
-  const { id, parent } = x;
+  const mainModule = process.mainModule;
+  const { id, filename, parent } = xModule;
   if (!id) {
     return undefined;
   }
   const isRoot = parent && parent.id === id;
-  return {
+  const info: ModuleInfo = {
     id,
-    parent: isRoot ? null : moduleInfo(parent)
+    filename,
+    dirname: dirname(filename),
+    main: {
+      id: mainModule.id,
+      filename: mainModule.filename,
+      dirname: dirname(mainModule.filename),
+      parent: undefined,
+      main: undefined
+    },
+    parent: isRoot ? undefined : moduleInfo(parent),
   };
+  return info;
 }
