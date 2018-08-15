@@ -1,7 +1,7 @@
 import { join } from "path";
-import src, { debug } from "../";
 describe(require(join(__dirname, "../package.json")).name, () => {
-  it("works", () => {
-    expect(debug.namespace).toBe("local/module-x");
+  it("works", async () => {
+    const debug = (await import("../src")).default;
+    expect(debug.namespace).toBe("@local/module-x");
   });
 });

@@ -11,7 +11,7 @@ export default function createDebug(Debug: IDebug, out = process.env.DEBUG_TO) {
     DEBUG_NAMESPACE_SUFFIX !== null &&
     typeof DEBUG_NAMESPACE_SUFFIX === "string"
       ? DEBUG_NAMESPACE_SUFFIX
-      : ":";
+      : "";
   //
   return (target: NodeModule): IDebugger => {
     const namespace = moduleInfoName(moduleInfo(target)) + terminator;

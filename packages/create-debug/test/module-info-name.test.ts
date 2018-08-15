@@ -1,4 +1,4 @@
-import { basename, extname } from "path";
+import { basename, extname, dirname } from "path";
 
 const pkg = require("../package.json");
 
@@ -13,7 +13,8 @@ describe("module-info-name", () => {
             main: undefined,
             package: {
                 name: pkg.name,
-                main: pkg.main
+                main: pkg.main,
+                dirname: dirname(__dirname)
             }
         });
         const expected = `${pkg.name}/${basename(__filename).replace(extname(__filename), "")}`;

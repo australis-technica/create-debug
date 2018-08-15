@@ -14,7 +14,7 @@ export default (filename: string): string => {
     })()) {
         dots += back;
         if (dots.split(back).length > filename.split(sep).length) {
-            throw new Error("Invalid Path " + dirname(filename))
+            return undefined;
         }
     }
     return packagePath;
