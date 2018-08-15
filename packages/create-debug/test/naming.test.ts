@@ -1,3 +1,6 @@
+import { basename, extname } from "path";
+
+const pkg = require("../package.json");
 /** */
 describe("naming", () => {
   /** */
@@ -6,6 +9,7 @@ describe("naming", () => {
     const moduleInfoName = (await import("../src/module-info-name")).default;
     const info = moduleInfo(module);
     const moduleName = moduleInfoName(info);
-    expect(moduleName).toBe("test/naming");
+    const expected = `${pkg.name}/${basename(__filename).replace(extname(__filename), "")}`;
+    expect(moduleName).toBe(expected);
   });
 });
