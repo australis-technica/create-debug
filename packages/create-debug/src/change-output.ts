@@ -1,17 +1,11 @@
 import { IDebugger } from "debug";
 /** */
-export default function changeOutput(out: string) {
+export type Log = (message?: any, ...optionalParams: any[]) => any;
+/** */
+export default function changeOutput(log: Log) {
   /** */
-  return <T extends IDebugger> (d: T):T=> {
-    switch (out) {
-      case "stdout": {
-        d.log = console.log.bind(console);
-        break;
-      }
-      default: {
-        // ....
-      }
-    }
+  return <T extends IDebugger>(d: T): T => {
+    if (typeof log === "function") d.log = log;
     return d;
   };
 }
