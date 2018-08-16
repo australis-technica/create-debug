@@ -2,21 +2,22 @@
   "name": "create-debug-project",
   "version": "1.0.2",
   "private": true,
-  "description": "create debug from \"debug\" using module.id   redirects to stdout if env.DEBUG_TO === \"stdout\"    ...WIP",
+  "description": "create debug from \"debug\" using module.id",
   "main": "index.js",
   "scripts": {
-    "build": "lerna --no-sort run build",
+    "build": "lerna run build --no-sort",
     "clean-modules": "rimraf **/node_modules/* && rm yarn.lock && yarn",
-    "test": "echo doesn\\'t work && lerna --no-sort run test",    
+    "test": "lerna run test",    
     "set-version": "node ./scripts/set-version.js"
+
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/australis-technica/create-debug.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "d10221",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/australis-technica/create-debug/issues"
   },

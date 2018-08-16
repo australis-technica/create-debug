@@ -1,7 +1,7 @@
 {
   "name": "@australis/create-debug",
   "version": "1.0.2",
-  "description": "",
+  "description": "create debug from \"debug\" using module.id",
   "private": false,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,9 +12,17 @@
     "rebuild": "npm run clean && npm run build",
     "watch": "tsc -p . --watch"
   },
-  "keywords": [],
-  "author": "daniel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/australis-technica/create-debug.git"
+  },
+  "keywords": ["debug", "namespace", "log"],
+  "author": "d10221",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/australis-technica/create-debug/issues"
+  },
+  "homepage": "https://github.com/australis-technica/create-debug#readme",
   "jest": {
     "globals": {
       "ts-jest": {
