@@ -4,7 +4,7 @@ import moduleNameSpace from "./module-namespace";
 /**
  *
  */
-export default function createDebug(Debug: IDebug, out = process.env.DEBUG_TO) {
+export default function moduleDebugger(Debug: IDebug, out = process.env.DEBUG_TO) {
   const { DEBUG_NAMESPACE_SUFFIX } = process.env;
   const terminator =
     DEBUG_NAMESPACE_SUFFIX !== null &&
