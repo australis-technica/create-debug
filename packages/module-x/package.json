@@ -9,7 +9,9 @@
     "test": "jest --env=node --ci",
     "build": "tsc -p .",
     "clean": "rimraf ./lib",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "npm run clean && npm run build",
+    "watch": "tsc -p . --watch",
+    "test:watch": "jest --env=node --watch"
   },
   "keywords": [],
   "author": "",

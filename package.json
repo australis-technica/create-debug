@@ -8,8 +8,8 @@
     "build": "lerna run build --no-sort",
     "clean-modules": "rimraf **/node_modules/* && rm yarn.lock && yarn",
     "test": "lerna run test",    
-    "set-version": "node ./scripts/set-version.js"
-
+    "set-version": "node ./scripts/set-version.js",
+    "rebuild": "lerna run rebuild --no-sort"
   },
   "repository": {
     "type": "git",
