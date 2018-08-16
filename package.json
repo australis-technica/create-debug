@@ -1,6 +1,6 @@
 {
   "name": "create-debug-project",
-  "version": "1.0.1-0",
+  "version": "1.0.2",
   "private": true,
   "description": "create debug from \"debug\" using module.id   redirects to stdout if env.DEBUG_TO === \"stdout\"    ...WIP",
   "main": "index.js",

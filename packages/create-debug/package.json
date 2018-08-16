@@ -1,6 +1,6 @@
 {
   "name": "@australis/create-debug",
-  "version": "1.0.1-0",
+  "version": "1.0.2",
   "description": "",
   "private": false,
   "main": "lib/index.js",
