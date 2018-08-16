@@ -10,7 +10,8 @@
     "build": "tsc -p .",
     "clean": "rimraf lib",
     "rebuild": "npm run clean && npm run build",
-    "watch": "tsc -p . --watch"
+    "watch": "tsc -p . --watch",
+    "test:watch": "jest --env=node --watch"
   },
   "repository": {
     "type": "git",

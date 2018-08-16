@@ -1,13 +1,17 @@
 import { dirname, extname, sep, basename } from "path";
 import packageInfo from "./package-info";
 /** */
+export interface NodeModuleLike {
+  filename: string
+}
+/** */
 export default function moduleNamespace(
-  xModule: NodeModule,
+  xModule: NodeModuleLike,
   delimiter = "|"
-): string {
+): string { 
   const pkg = packageInfo(xModule.filename);
   const mainDir = dirname(pkg.main).replace(".", "");
-  const regex = `^/${mainDir}(.*)`;
+  const regex = `^(?:\\/|\\\\)${mainDir}(.*)`;
   let fullName = xModule.filename
     .replace(pkg.dirname, "")
     .replace(new RegExp(regex), (s, args) => {
