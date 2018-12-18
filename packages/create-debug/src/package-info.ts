@@ -7,7 +7,7 @@ export interface PackageInfo {
     dirname: string;
 }
 /** */
-export default (filename: string): PackageInfo => {
+export default (filename: string): PackageInfo|undefined => {
     const path = packagePath(filename);
     if(!path) return undefined;
     const { name, main } = require(path);

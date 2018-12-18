@@ -1,6 +1,6 @@
 {
   "name": "create-debug-project",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "private": true,
   "description": "create debug from \"debug\" using module.id",
   "main": "index.js",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/australis-technica/create-debug#readme",
   "devDependencies": {
-    "lerna": "^2.11.0"
+    
   },
   "workspaces": [
     "packages/create-debug",

@@ -2,7 +2,7 @@ import { resolve, dirname, sep } from "path";
 import { existsSync, } from "fs";
 const back = `..${sep}`;
 /** */
-export default (filename: string): string => {
+export default (filename: string): string|undefined => {
     if (!existsSync(resolve(filename))) {
         throw new Error(`${filename} doesn't exist`);
     }

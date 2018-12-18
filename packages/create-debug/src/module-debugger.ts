@@ -22,7 +22,7 @@ function env() {
       ? DEBUG_NAMESPACE_SUFFIX
       : defaultOptions.suffix;
   //
-  let out: Log = undefined;
+  let out: Log |undefined= undefined;
   switch (DEBUG_TO) {
     case "stdout": {
       out = console.log.bind(console);
@@ -37,11 +37,8 @@ function env() {
     suffix
   };
 }
-/**
- *
- */
-export default function moduleDebugger(
-  Debug: IDebug|IDebugFty,
+function moduleDebugger(
+  Debug: IDebug | IDebugFty,
   options: Options = defaultOptions
 ) {
   options = {
@@ -56,3 +53,8 @@ export default function moduleDebugger(
     return changeOutput(options.out)(Debug(namespace));
   };
 }
+
+/**
+ *
+ */
+export default moduleDebugger;

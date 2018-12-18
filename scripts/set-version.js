@@ -1,65 +1,73 @@
 #!/usr/bin/env node
 const { join, resolve } = require("path");
+const { existsSync } = require("fs");
 const { workspaces, version } = require("../package.json");
-const { readFileSync, writeFileSync } = require("fs");
+const validVersion = require("./valid-version");
+const changeVersion = require("./change-version");
 const cwd = process.cwd();
-const rootVersion = version;
+const projectVersion = version;
+const args = process.argv.slice(2);
+let quiet = args.find(a => /(--quiet|-v)/.test(a));
+quiet = typeof quiet === "string";
+log = !quiet ? console.log.bind(console) : () => {};
 /**
  * Start
  */
-if (!rootVersion) {
+if (!projectVersion) {
   showUsage();
   process.exit(-1);
 }
-// console.log("root-version: %s", rootVersion);
-if (!validVersion(rootVersion)) {
-  console.log("invalid version '%s' use: \\d+.\\d+.\\d+(-\\d+)?", rootVersion);
+log("root-version: %s", projectVersion);
+if (!validVersion(projectVersion)) {
+  log("invalid version '%s' use: \\d+.\\d+.\\d+(-\\d+)?", projectVersion);
   showUsage();
   process.exit(-1);
 }
 const packages = workspaces.map(x => {
-  const path = join(process.cwd(), x, "package.json");
-  const { name, version } = require(path);
+  const path = join(cwd, x, "package.json");
+  const { name, version, dependencies } = require(path);
   return {
     path,
     name,
-    version
+    version,
+    dependencies,
   };
 });
-// console.log(packages);
+const workspaceNames = packages.map(x => x.name);
+log("Workspaces:\n", workspaceNames.join("\n"));
 // run
-for (const pkg of packages) {
-  const { path } = pkg;
-  changeVersion(path, rootVersion);
+let changed = false;
+for (const workspace of packages) {
+  if (workspace.version !== projectVersion) {
+    changeVersion(workspace.path, projectVersion);
+    log("set-version: %s => %s", workspace.path, version);
+    changed = true;
+  }
+  if (workspace.dependencies) {
+    for (const dependencyName of workspaceNames) {
+      if (dependencyName in workspace.dependencies) {
+        //  Todo Change Dependecy Version
+        if (workspace.dependencies[dependencyName] !== projectVersion) {
+          console.log(
+            '"%s" reference "%s":"%s"',
+            workspace.name,
+            dependencyName,
+            workspace.dependencies[dependencyName],
+          );
+        }
+      }
+    }
+  }
 }
-changeVersion(resolve("lerna.json"), rootVersion);
+if (existsSync(resolve(cwd, "lerna.json"))) {
+  changeVersion(resolve("lerna.json"), projectVersion);
+  log("set-version: %s => %s", "lerna.json", version);
+  changed = true;
+}
+log("%s", changed ? "Changed" : "No changes");
 /**
  *
- * @param {string} path
- * @param {string} version
- */
-function changeVersion(path, version) {
-  writeFileSync(
-    path,
-    readFileSync(path, "utf-8").replace(
-      /"version":\s+"(.*)"/,
-      `"version": "${version}"`
-    )
-  );
-}
-/**
- * 
  */
 function showUsage() {
   console.log("set new version on ROOT package.json");
-}
-/**
- *
- * @param {string} version
- */
-function validVersion(version) {
-  // source: https://github.com/sindresorhus/semver-regex
-  return /\bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi.test(
-    version
-  );
 }

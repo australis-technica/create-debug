@@ -1,4 +1,4 @@
-import { basename, extname, dirname } from "path";
+import { basename, extname } from "path";
 
 const pkg = require("../package.json");
 
@@ -30,7 +30,7 @@ describe("module-namespace", () => {
     expect(modulex.submoduleZ.namespace).toBe("@local/module-x|submodule-z");
   });
   it("ext namespace no-main-dir", async () => {
-    const debug = (await import("@local/module-y")).default;
+    const debug = require("@local/module-y").default;
     expect(debug.namespace).toBe("@local/module-y");
   });
   it("sub-module namespace", async () => {

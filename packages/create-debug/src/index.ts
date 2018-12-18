@@ -1,12 +1,2 @@
-import { default as moduleDebugger, Options } from "./module-debugger";
-import { IDebugger } from "debug";
-/**
- * export with default options
- */
-export function debugModule(m: NodeModule, options?: Options): IDebugger {
-  return moduleDebugger(require("debug"), options)(m);
-}
-/**
- * to change IDebug/IDebugFty instead of "debug"
- */
-export { moduleDebugger };
+export { default as moduleDebugger,IDebugFty, Options } from "./module-debugger";
+export { default as debugModule } from "./debug-module";

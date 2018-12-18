@@ -1,7 +1,7 @@
 /** dummy logger */
 class Logger {
   out: any[] = [];
-  log = (format, args) => {
+  log = (format: any, args: any) => {
     this.out.push({ format, args });
   };
 }

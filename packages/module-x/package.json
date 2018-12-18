@@ -1,7 +1,7 @@
 {
   "name": "@local/module-x",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,32 +17,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/debug": "^0.0.30",
+    "@types/debug": "^0.0.31",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.0.0",
-    "jest": "22.4.3",
+    "jest": "23.6.0",
     "rimraf": "^2.6.2",
-    "ts-jest": "22.4.4",
-    "ts-node": "^5.0.0",
-    "typescript": "3.0.1"
-  },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.test.json"
-      }
-    },
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/test/.*|(\\.|/))(test|spec)\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "ts-jest": "23.10.5",
+    "ts-node": "^7.0.1",
+    "typescript": "3.2.2"
   }
 }
