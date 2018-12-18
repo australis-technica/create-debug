@@ -11,6 +11,8 @@ export default function moduleNamespace(
   xModule: NodeModuleLike,
   delimiter = "|"
 ): string {
+  if (!xModule) { return ""; }
+  if (!xModule.filename) { return ""; }
   const pkg = packageInfo(xModule.filename);
   if (!pkg) return basename(xModule.filename).replace(extname(xModule.filename), "");
   if (!pkg.main) { log("Warning: Not package.main ") }
