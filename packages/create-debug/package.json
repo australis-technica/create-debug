@@ -11,7 +11,8 @@
     "clean": "rimraf lib",
     "rebuild": "npm run clean && npm run build",
     "watch": "tsc -p . --watch",
-    "test:watch": "jest --env=node --watch"
+    "test:watch": "jest --env=node --watch",
+    "publishit": "npm publish --access public"
   },
   "repository": {
     "type": "git",
