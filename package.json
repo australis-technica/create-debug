@@ -1,6 +1,6 @@
 {
   "name": "create-debug-project",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "create debug from \"debug\" using module.id",
   "main": "index.js",

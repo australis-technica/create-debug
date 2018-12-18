@@ -1,8 +1,7 @@
 import { dirname, extname, sep, basename } from "path";
 import packageInfo from "./package-info";
-import debugModule from "./debug-module";
-/** */
-const debug = debugModule(module);
+
+const log = process.env.NODE_ENV !== "production" ? console.log.bind(console) : (() => { });
 /** */
 export interface NodeModuleLike {
   filename: string
@@ -13,8 +12,8 @@ export default function moduleNamespace(
   delimiter = "|"
 ): string {
   const pkg = packageInfo(xModule.filename);
-  if(!pkg) return basename(xModule.filename).replace(extname(xModule.filename), "");
-  if (!pkg.main) { debug("Warning: Not package.main ") }
+  if (!pkg) return basename(xModule.filename).replace(extname(xModule.filename), "");
+  if (!pkg.main) { log("Warning: Not package.main ") }
 
   const mainDir = dirname(pkg.main || "").replace(".", "");
 

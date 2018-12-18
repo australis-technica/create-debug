@@ -1,6 +1,7 @@
 import { IDebug, IDebugger } from "debug";
-import changeOutput, { Log } from "./change-output";
+import changeOutput from "./change-output";
 import moduleNameSpace from "./module-namespace";
+import { Log } from "./types";
 /** partial IDebug */
 export type IDebugFty = (namespace: string) => IDebugger;
 /** */
@@ -22,7 +23,7 @@ function env() {
       ? DEBUG_NAMESPACE_SUFFIX
       : defaultOptions.suffix;
   //
-  let out: Log |undefined= undefined;
+  let out: Log | undefined = undefined;
   switch (DEBUG_TO) {
     case "stdout": {
       out = console.log.bind(console);
@@ -37,14 +38,15 @@ function env() {
     suffix
   };
 }
-function moduleDebugger(
+/** */
+export default function moduleDebugger(
   Debug: IDebug | IDebugFty,
   options: Options = defaultOptions
 ) {
   options = {
     ...defaultOptions,
     ...env(),
-    ...(options || {})
+    ...(options || defaultOptions)
   };
   const { suffix } = options;
   /** */
@@ -53,8 +55,3 @@ function moduleDebugger(
     return changeOutput(options.out)(Debug(namespace));
   };
 }
-
-/**
- *
- */
-export default moduleDebugger;

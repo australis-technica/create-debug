@@ -1,15 +1,13 @@
 {
   "name": "@australis/create-debug",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "create debug from \"debug\" using module.id",
   "private": false,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --env=node --ci",
-    "build": "tsc -p .",
-    "clean": "rimraf lib",
-    "rebuild": "npm run clean && npm run build",
+    "build": "rimraf ./lib && tsc -p .",    
     "watch": "tsc -p . --watch",
     "test:watch": "jest --env=node --watch",
     "publishit": "npm publish --access public"

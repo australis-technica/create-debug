@@ -1,6 +1,5 @@
 import { IDebugger } from "debug";
-/** */
-export type Log = (message?: any, ...optionalParams: any[]) => any;
+import { Log } from "./types";
 /** */
 export default function changeOutput(log: Log|undefined) {
   /** */

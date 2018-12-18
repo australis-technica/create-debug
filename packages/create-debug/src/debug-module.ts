@@ -1,6 +1,10 @@
-import moduleDebugger, { Options } from "./module-debugger";
+import { Log } from "./types";
 import { IDebugger } from "debug";
+import moduleDebugger from "./module-debugger";
 
-export default (m: NodeModule, options?: Options): IDebugger => {
-  return moduleDebugger(require("debug"), options)(m);
-};
+const debugModule = (m: NodeModule, options?: {
+    out?: Log;
+    suffix?: string;
+}): IDebugger => moduleDebugger(require("debug"), options)(m);
+
+export default debugModule;
