@@ -29,3 +29,4 @@ scriptcs_packages/
 **/dist/*
 **/tmp/*
 *.tgz
+*.lock
